@@ -3,6 +3,7 @@ package com.example.swaggerspring.controlller;
 import com.example.swaggerspring.dto.PersonRequest;
 import com.example.swaggerspring.entity.Person;
 import com.example.swaggerspring.repository.PersonRepository;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    //@ApiOperation(value = "View a list of available users", response = String.class)
+    @ApiOperation(value = "View a list of available users", response = String.class)
     @GetMapping("/person/{id}")
     public ResponseEntity<?> getPerson(@PathVariable Long id){
 
@@ -34,8 +35,7 @@ public class PersonController {
             return ResponseEntity.ok(person);
         return new ResponseEntity("Person not found", HttpStatus.NOT_FOUND);
     }
-
-    //@ApiOperation("Created Person")
+    @ApiOperation(value = "Created Person", response = ResponseEntity.class)
     @PostMapping("/person")
     public ResponseEntity<?> savePerson(@RequestBody PersonRequest personRequest){
         Person person = new Person(personRequest.firstName);
