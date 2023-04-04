@@ -1,5 +1,7 @@
 package com.example.swaggerspring.entity;
 
+//import io.swagger.annotations.ApiModel;
+
 import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
@@ -7,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "person")
-@ApiModel("Model Person")
+@ApiModel("Entidad Persona")
 public class Person implements Serializable {
 
     @Id

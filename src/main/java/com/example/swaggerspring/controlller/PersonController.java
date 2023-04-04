@@ -1,8 +1,10 @@
 package com.example.swaggerspring.controlller;
 
 import com.example.swaggerspring.dto.PersonRequest;
+import com.example.swaggerspring.dto.PersonResponse;
 import com.example.swaggerspring.entity.Person;
 import com.example.swaggerspring.repository.PersonRepository;
+//import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,9 +39,10 @@ public class PersonController {
     }
     @ApiOperation(value = "Created Person", response = ResponseEntity.class)
     @PostMapping("/person")
-    public ResponseEntity<?> savePerson(@RequestBody PersonRequest personRequest){
+    public ResponseEntity<PersonResponse> savePerson(@RequestBody PersonRequest personRequest){
         Person person = new Person(personRequest.firstName);
         Person personSave = personRepository.save(person);
-        return new ResponseEntity(person, HttpStatus.CREATED);
+        return new ResponseEntity(new PersonResponse(personSave.getIdPerson(), personSave.getFirstName()), HttpStatus.CREATED);
     }
+
 }

@@ -2,12 +2,14 @@ package com.example.swaggerspring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
 
@@ -18,7 +20,8 @@ import java.util.Collections;
  * JSON: http://localhost:8008/v2/api-docs/
  */
 @Configuration
-public class SwaggerConfig {
+@EnableSwagger2
+public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public Docket api(){
@@ -32,8 +35,8 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiDetails(){
-        return new ApiInfo("Spring Boot Person API REST",
-                "Manejo de Personas",
+        return new ApiInfo("Fiserv Documentation",
+                "Manejo de medios de pagos",
                 "1.0",
                 "http://www.google.com",
                 new Contact("Alan", "http://www.google.com", "alan@example.com"),
