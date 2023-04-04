@@ -14,8 +14,8 @@ import java.util.Collections;
 /**
  * Configuración Swagger para la generación de documentación de la API REST
  *
- * HTML: http://localhost:8081/swagger-ui/
- * JSON: http://localhost:8081/v2/api-docs
+ * HTML: http://localhost:8008/swagger-ui/
+ * JSON: http://localhost:8008/v2/api-docs/
  */
 @Configuration
 public class SwaggerConfig {
