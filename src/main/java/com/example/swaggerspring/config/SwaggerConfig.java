@@ -1,5 +1,10 @@
 package com.example.swaggerspring.config;
 
+import io.swagger.v3.oas.models.ExternalDocumentation;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -19,11 +24,28 @@ import java.util.Collections;
  * HTML: http://localhost:8008/swagger-ui/
  * JSON: http://localhost:8008/v2/api-docs/
  */
-/*@Configuration
-@EnableSwagger2
-public class SwaggerConfig extends WebMvcConfigurerAdapter {
+@Configuration
+//@EnableSwagger2
+public class SwaggerConfig /*extends WebMvcConfigurerAdapter*/ {
 
     @Bean
+    public OpenAPI springShopOpenAPI() {
+        return new OpenAPI()
+                .info(getInfo())
+                .externalDocs(new ExternalDocumentation()
+                        .description("SpringShop Wiki Documentation")
+                        .url("https://springshop.wiki.github.org/docs"));
+    }
+
+    public Info getInfo(){
+        return new Info().title("Fiserv API")
+                .description("Spring shop sample application")
+                .version("v0.0.1")
+                .license(new License()
+                        .name("Apache 2.0")
+                        .url("http://springdoc.org"));
+    }
+    /*@Bean
     public Docket api(){
 
         return new Docket(DocumentationType.SWAGGER_2)
@@ -43,7 +65,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
                 "MIT",
                 "http://www.google.com",
                 Collections.emptyList());
-    }
+    }*/
 
-}*/
+}
 
