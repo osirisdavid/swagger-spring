@@ -1,6 +1,6 @@
 package com.example.swaggerspring.repository;
 
-import com.example.swaggerspring.entity.Person;
+import com.example.swaggerspring.dto.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

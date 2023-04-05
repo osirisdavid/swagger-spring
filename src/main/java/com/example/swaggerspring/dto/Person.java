@@ -1,15 +1,17 @@
-package com.example.swaggerspring.entity;
+package com.example.swaggerspring.dto;
 
 //import io.swagger.annotations.ApiModel;
 
-import io.swagger.annotations.ApiModel;
+//import io.swagger.annotations.ApiModel;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "person")
-@ApiModel("Entidad Persona")
+//@ApiModel("Entidad Persona")
 public class Person implements Serializable {
 
     @Id
@@ -17,6 +19,8 @@ public class Person implements Serializable {
     @Column(name = "id_person")
     private Long idPerson;
 
+    @NotBlank
+    @Size(min = 0, max = 50)
     @Column(name = "firstName")
     private String firstName;
 
